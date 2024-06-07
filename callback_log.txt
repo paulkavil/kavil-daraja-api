@@ -1,0 +1,108 @@
+Array
+(
+    [name] => Add your name in the body
+)
+Array
+(
+    [Body] => Array
+        (
+            [stkCallback] => Array
+                (
+                    [MerchantRequestID] => 29115-34620561-1
+                    [CheckoutRequestID] => ws_CO_191220191020363925
+                    [ResultCode] => 0
+                    [ResultDesc] => The service request is processed successfully.
+                    [CallbackMetadata] => Array
+                        (
+                            [Item] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [Name] => Amount
+                                            [Value] => 100
+                                        )
+
+                                    [1] => Array
+                                        (
+                                            [Name] => MpesaReceiptNumber
+                                            [Value] => LGR7OWQX1N
+                                        )
+
+                                    [2] => Array
+                                        (
+                                            [Name] => Balance
+                                        )
+
+                                    [3] => Array
+                                        (
+                                            [Name] => TransactionDate
+                                            [Value] => 20210603151000
+                                        )
+
+                                    [4] => Array
+                                        (
+                                            [Name] => PhoneNumber
+                                            [Value] => 254708374149
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+Array
+(
+    [Body] => Array
+        (
+            [stkCallback] => Array
+                (
+                    [MerchantRequestID] => 29115-34620561-1
+                    [CheckoutRequestID] => ws_CO_191220191020363925
+                    [ResultCode] => 0
+                    [ResultDesc] => The service request is processed successfully.
+                    [CallbackMetadata] => Array
+                        (
+                            [Item] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [Name] => Amount
+                                            [Value] => 100
+                                        )
+
+                                    [1] => Array
+                                        (
+                                            [Name] => MpesaReceiptNumber
+                                            [Value] => LGR7OWQX1N
+                                        )
+
+                                    [2] => Array
+                                        (
+                                            [Name] => Balance
+                                        )
+
+                                    [3] => Array
+                                        (
+                                            [Name] => TransactionDate
+                                            [Value] => 20210603151000
+                                        )
+
+                                    [4] => Array
+                                        (
+                                            [Name] => PhoneNumber
+                                            [Value] => 254708374149
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

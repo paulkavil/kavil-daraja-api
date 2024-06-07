@@ -1,23 +1,25 @@
 <?php
+// callback.php
+$data = file_get_contents('php://input');
+$decoded = json_decode($data, true);
 
-header("Content-Type: application/json");
-$stkCallbackResponse = file_get_contents('php://input');
-$logFile = "Mpesastkresponse.json";
-$log = fopen($logFile, "a");
-fwrite($log, $stkCallbackResponse);
-fclose($log);
+// Log the callback data for debugging purposes
+file_put_contents('callback_log.txt', print_r($decoded, true), FILE_APPEND);
 
-$data = json_decode($stkCallbackResponse);
-
-$MerchantRequestID = $data->Body->stkCallback->MerchantRequestID;
-$CheckoutRequestID = $data->Body->stkCallback->CheckoutRequestID;
-$ResultCode = $data->Body->stkCallback->ResultCode;
-$ResultDesc = $data->Body->stkCallback->ResultDesc;
-$Amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
-$TransactionId = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
-$UserPhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
-//CHECK IF THE TRASACTION WAS SUCCESSFUL 
-if ($ResultCode == 0) {
-  //STORE THE TRANSACTION DETAILS IN THE DATABASE
-  mysqli_query($db, "INSERT INTO transactions (MerchantRequestID,CheckoutRequestID,ResultCode,Amount,MpesaReceiptNumber,PhoneNumber) VALUES ('$MerchantRequestID','$CheckoutRequestID','$ResultCode','$Amount','$TransactionId','$UserPhoneNumber')");
+// Process the callback data (you can add your custom logic here)
+if (isset($decoded['Body']['stkCallback']['ResultCode'])) {
+    $resultCode = $decoded['Body']['stkCallback']['ResultCode'];
+    if ($resultCode == 0) {
+        // Payment was successful
+        $amount = $decoded['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
+        $mpesaReceiptNumber = $decoded['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value'];
+        $phoneNumber = $decoded['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value'];
+        
+        // Implement your business logic here
+    }
 }
+
+// Send a response back to M-Pesa
+header("Content-Type: application/json");
+echo json_encode(["ResultCode" => 0, "ResultDesc" => "Success"]);
+?>
